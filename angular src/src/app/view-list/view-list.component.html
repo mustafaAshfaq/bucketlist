@@ -1,0 +1,22 @@
+<h2>Awsome Bucket list</h2>
+<table id="table">
+   
+    <thead>
+        <tr>
+            <th>Priority Level</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let listItem of list">
+            <td>{{listItem.category}}</td>
+            <td>{{listItem.title}}</td>
+            <td>{{listItem.description}}</td>
+            <td><button type="button" (click)="deleteList(listItem);$event.stopPropagation();">Delete</button></td>
+        </tr>
+
+    </tbody>
+</table>
+<app-add-list (addList)="onAddList($event)"></app-add-list>

@@ -1,0 +1,31 @@
+﻿<h2>Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes | async ;let i=index"
+        [class.selected]="hero === selectedHero" 
+        (click)="onSelect(hero)">
+        <span class="badge">{{i+1}}</span> {{hero.name}}
+    </li>
+</ul>
+<div class="container">
+    <form #heroForm="ngForm" (ngSubmit)="onSubmit(heroForm)" >
+        <div>
+            <label for="name">Name</label>
+            <input type="text"  required name="name" id="name" [(ngModel)]="newHero.name" />
+        </div>
+        <div>
+            <label for="powers">Select Power</label>
+            <select name="powers" required id="powers" [(ngModel)]="newHero.powers" >
+                <option value="Fly">Flying</option>
+                <option value="Invisible">Invisibility</option>
+                <option value="Super Strength">Strong</option>
+            </select>
+        </div>
+        <div>
+            <label for="nemesis">Nemesis</label>
+            <input type="text" name="nemesis" required id="nemesis" [(ngModel)]="newHero.nemesis" />
+        </div>
+        
+        <button type="submit">Add Hero</button>
+    </form>
+    
+</div>
